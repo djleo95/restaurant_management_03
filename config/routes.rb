@@ -29,4 +29,5 @@ Rails.application.routes.draw do
     resources :discount_codes
     resources :users
   end
+  get "/chart" => "admin/analytics#index"
 end

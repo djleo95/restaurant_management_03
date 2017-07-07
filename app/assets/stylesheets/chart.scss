@@ -1,0 +1,72 @@
+$white: #fff;
+$red: #aa0401;
+$gradient1: #e9f0ee;
+$gradient2: #e4e9de;
+$gradient4: #a6f0db;
+$gradient5: #daffec;
+$gradient6: #ebfff7;
+$gradient7: #e1fbe0;
+$green: #08d72a;
+$gradient: linear-gradient(to right, $gradient4, $gradient5);
+$gradient2: linear-gradient(to right, $gradient1, $gradient2);
+$gradient3: linear-gradient(to right, $gradient6 75%, $gradient7);
+
+.chart-screen {
+  padding: 90px 0 0;
+  background: $gradient;
+  min-height:100vh;
+  margin: 0 !important;
+}
+
+.chart-container {
+  border-radius: 1px;
+  box-shadow: 1px 4px 14px #4f4f4f;
+  background: $gradient2;
+  padding: 5px;
+  margin: 2px;
+}
+
+.mg-bt-20 {
+  margin-bottom: 20px;
+}
+
+.box-container {
+  border-radius: 1px;
+  box-shadow: 1px 4px 14px #4f4f4f;
+  background: $gradient3;
+  padding: 15px 5px 5px;
+  margin: 2px;
+}
+
+.statistic {
+  font-size: 5em;
+  font-weight: bold;
+  font-family: Khand;
+  color: $green;
+}
+
+.statistic-negative {
+  color: $red;
+}
+
+.mg-lf-70 {
+  margin-bottom: 20px;
+  margin-left: 70px !important;
+}
+
+.btn-next {
+  position: absolute;
+  right: 100px;
+  top: 320px;
+}
+
+.btn-previous {
+  position: absolute;
+  left: 100px;
+  top: 320px;
+}
+
+.fa-angle-right,
+.fa-angle-left {
+  font-size: 8em !important;
+}
