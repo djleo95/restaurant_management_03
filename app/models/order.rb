@@ -12,6 +12,22 @@ class Order < ApplicationRecord
   accepts_nested_attributes_for :guest
   accepts_nested_attributes_for :table
 
+  def all_price
+    total = 0
+    Order.all.each do |d|
+      total += d.subtotal
+    end
+    return total
+  end
+
+  def all_pending_price
+    total = 0
+    Order.all.each do |d|
+      total += d.subtotal unless d.is_confirm
+    end
+    total
+  end
+
   def subtotal
     total_dishes_price = order_dishes.map{|order_dish| order_dish.valid? ?
       (order_dish.quantity * order_dish.price) : 0}.sum

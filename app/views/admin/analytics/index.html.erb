@@ -1,0 +1,110 @@
+<section class="chart-screen">
+  <h1 class="text-center">Statistic</h1>
+  <div class="container chart-container animated wow slideInLeft"
+    id="stat-left">
+    <h3 class="text-center"> All about us</h3>
+    <div class="row container mg-lf-70">
+      <div class="col-sm-2 box-container">
+        <h3 class="text-center">Dish</h3>
+        <p class="statistic text-center positive"><%= Dish.count %></p>
+      </div>
+      <div class="col-sm-2 box-container">
+        <h3 class="text-center">Unavailable Dish</h3>
+        <p class="statistic text-center statistic-negative">
+          <%= Dish.where(is_available: false).count %></p>
+      </div>
+
+      <div class="col-sm-2 box-container">
+        <h3 class="text-center">Order</h3>
+        <p class="statistic text-center"><%= Order.count %></p>
+      </div>
+      <div class="col-sm-2 box-container">
+        <h3 class="text-center">Pending Order</h3>
+        <p class="statistic text-center statistic-negative">
+          <%= Order.where(is_confirm: false).count %></p>
+      </div>
+      <div class="col-sm-2 box-container">
+        <h3 class="text-center">Income</h3>
+        <p class="statistic text-center"><%= Order.new.all_price %>$</p>
+      </div>
+    </div>
+    <div class="row container mg-lf-70">
+      <div class="col-sm-2 box-container">
+        <h3 class="text-center">Combo</h3>
+        <p class="statistic text-center"><%= Combo.count %></p>
+      </div>
+      <div class="col-sm-2 box-container">
+        <h3 class="text-center">Guest</h3>
+        <p class="statistic text-center"><%= Guest.count %></p>
+      </div>
+      <div class="col-sm-2 box-container">
+        <h3 class="text-center">Discount Code</h3>
+        <p class="statistic text-center">
+          <%= DiscountCode.count %></p>
+      </div>
+      <div class="col-sm-2 box-container">
+        <h3 class="text-center">Used Code</h3>
+        <p class="statistic text-center statistic-negative">
+          <%= DiscountCode.where(status: "Used").count %></p>
+      </div>
+      <div class="col-sm-2 box-container">
+        <h3 class="text-center">Income (Pending)</h3>
+        <p class="statistic text-center statistic-negative">
+          <%= Order.new.all_pending_price %>$</p>
+      </div>
+    </div>
+  </div>
+  <div class="container hide animated wow slideInRight" id="stat-right">
+    <div class="row">
+      <div class="col-sm-5 col-sm-offset-1 chart-container">
+        <div class="row">
+          <h3 class="col-sm-8">Top Dish by Order</h3>
+        </div>
+        <div id="dish_by_order">
+          <%= top_by(@support.load_data[:dish_order]) %>
+        </div>
+      </div>
+      <div class="col-sm-5 chart-container">
+        <div class="row">
+          <h3 class="col-sm-8">Top Dish by Price</h3>
+        </div>
+        <div id="dish_by_order">
+          <%= top_by(@support.load_data[:dish_price]) %>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-5 col-sm-offset-1 chart-container">
+        <div class="row">
+          <h3 class="col-sm-8">Top combo by Order</h3>
+        </div>
+        <div id="dish_by_order">
+          <%= top_by(@support.load_data[:combo_order]) %>
+        </div>
+      </div>
+      <div class="col-sm-5 chart-container">
+        <div class="row">
+          <h3 class="col-sm-8">Top Combo by Price</h3>
+        </div>
+        <div id="dish_by_order">
+          <%= top_by(@support.load_data[:combo_price]) %>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-10 col-sm-offset-1 chart-container mg-bt-20">
+        <h3 class="text-center">Top Guest</h3>
+        <%= top_guest(@support.load_data[:guest]) %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="btn-next">
+      <i class="fa fa-angle-right animated wow fadeIn" data-wow-delay="1s"></i>
+    </div>
+    <div class="btn-previous hide">
+      <i class="fa fa-angle-left animated wow fadeIn" data-wow-delay="1s"></i>
+    </div>
+  </div>
+</section>
+

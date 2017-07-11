@@ -4,3 +4,23 @@ time_zone: "Hanoi"
 max_length: 100
 email: "no-reply@awesomecity.com"
 discount: 10
+v_dish: 'SELECT  "dishes"."name", sum(order_dishes.quantity)
+  FROM "dishes" INNER JOIN "order_dishes"
+  Where "order_dishes"."dish_id" = "dishes"."id"
+  GROUP BY dishes.id ORDER BY count(dishes.id) desc LIMIT 5'
+v_dish_by_price: 'SELECT  "dishes"."name", sum(order_dishes.total_price)
+  FROM "dishes" INNER JOIN "order_dishes"
+  Where "order_dishes"."dish_id" = "dishes"."id"
+  GROUP BY dishes.id ORDER BY count(dishes.id) desc LIMIT 5'
+v_combo: 'SELECT  "combos"."name", sum(order_combos.quantity)
+  FROM "combos" INNER JOIN "order_combos"
+  Where "order_combos"."combo_id" = "combos"."id"
+  GROUP BY combos.id ORDER BY count(combos.id) desc LIMIT 5'
+v_combo_by_price: 'SELECT  "combos"."name", sum(order_combos.total_price)
+  FROM "combos" INNER JOIN "order_combos"
+  Where "order_combos"."combo_id" = "combos"."id"
+  GROUP BY combos.id ORDER BY count(combos.id) desc LIMIT 5'
+best_customer: 'select "humen"."name", count(humen.name) from  "humen"
+  inner join "orders"
+  where "humen"."id" = "orders"."guest_id" AND "humen"."role" = "Guest"
+  group by "humen"."name" order by count(humen.name) desc LIMIT 5'

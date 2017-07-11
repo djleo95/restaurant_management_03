@@ -11,4 +11,6 @@ class Dish < ApplicationRecord
   scope :dishes, ->{where is_available: true}
   scope :popular_dishes, ->{joins(:order_dishes).group("dishes.id")
     .order("count(dishes.id) desc").limit(10)}
+  scope :valuable_dishes, ->{joins(:order_dishes).group("dishes.id")
+    .order("count(dishes.id)*dishes.price desc").limit(10)}
 end
