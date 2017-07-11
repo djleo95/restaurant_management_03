@@ -33,7 +33,6 @@ class Admin::OrdersController < ApplicationController
   def update
     if @order.update_attributes order_params
       flash[:success] = t "flash.order.update_success"
-      redirect_to admin_orders_path
     else
       render :edit
     end
